@@ -139,6 +139,7 @@ class _DataListTableState extends State<DataListTable> {
       // _CallYNPopup('Edit ${s}', 'Do you want to Edit ${s} now?', 'Yes', 'No',
       //     _Edit, _CloseYNPopup, s, false);
       EditDataTable1 = s;
+      undercontroltap1 = true;
       BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
     }
 

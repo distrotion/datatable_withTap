@@ -131,6 +131,10 @@ class __TableStrucMainState extends State<_TableStrucMain> {
                 height: 40,
                 // color: Colors.red,
                 child: ComInputText(
+                  isContr: undercontroltap1,
+                  fnContr: (input) {
+                    undercontroltap1 = input;
+                  },
                   sValue: EditDataTable1.number,
                   returnfunc: () {},
                   isEnabled: false,
@@ -144,6 +148,10 @@ class __TableStrucMainState extends State<_TableStrucMain> {
                 height: 40,
                 // color: Colors.red,
                 child: ComInputText(
+                    isContr: undercontroltap1,
+                    fnContr: (input) {
+                      undercontroltap1 = input;
+                    },
                     sValue: EditDataTable1.field01,
                     returnfunc: (String s) {
                       EditDataTable1.field01 = s;
@@ -157,6 +165,10 @@ class __TableStrucMainState extends State<_TableStrucMain> {
                 height: 40,
                 // color: Colors.red,
                 child: ComInputText(
+                  isContr: undercontroltap1,
+                  fnContr: (input) {
+                    undercontroltap1 = input;
+                  },
                   sValue: EditDataTable1.field02,
                   returnfunc: (String s) {
                     EditDataTable1.field02 = s;
@@ -171,6 +183,10 @@ class __TableStrucMainState extends State<_TableStrucMain> {
                 height: 40,
                 // color: Colors.red,
                 child: ComInputText(
+                  isContr: undercontroltap1,
+                  fnContr: (input) {
+                    undercontroltap1 = input;
+                  },
                   sValue: EditDataTable1.field03,
                   returnfunc: (String s) {
                     EditDataTable1.field03 = s;
@@ -185,6 +201,10 @@ class __TableStrucMainState extends State<_TableStrucMain> {
                 height: 40,
                 // color: Colors.red,
                 child: ComInputText(
+                  isContr: undercontroltap1,
+                  fnContr: (input) {
+                    undercontroltap1 = input;
+                  },
                   sValue: EditDataTable1.field04,
                   returnfunc: (String s) {
                     EditDataTable1.field04 = s;

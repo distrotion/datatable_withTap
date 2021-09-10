@@ -36,6 +36,8 @@ class ComInputText extends StatefulWidget {
     this.isForceShowError = false,
     this.sAutofillHints,
     this.isEnabled,
+    this.isContr,
+    this.fnContr,
     required this.returnfunc,
   }) : super(key: key);
 
@@ -57,7 +59,10 @@ class ComInputText extends StatefulWidget {
   final Function? funcValidation; //  null = no validation
   final String? sAutofillHints; // ex: AutofillHints.username
   final bool? isEnabled;
+  final Function? fnContr;
   Function returnfunc;
+
+  final bool? isContr;
 
   //state
   final enumInputTextStateList InputTextState;
@@ -94,6 +99,7 @@ class _ComInputTextState extends State<ComInputText> {
   void initState() {
     super.initState();
     //get-set text value
+
     _controller.value = TextEditingValue(
       text: widget.sValue,
       selection: TextSelection.fromPosition(
@@ -107,6 +113,7 @@ class _ComInputTextState extends State<ComInputText> {
         setState(() {
           BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
           _isError = !ValidationCurrentText(_controller.value.text);
+          widget.fnContr!(false);
           //GlobalVar.isShowErrorOnAllInputTextField = false;//nothing diff but bug for dropdown
           // GlobalVar.isForceShowErrorOnAllInputTextField_EvenValid = false;
           _isHideIconOnFocus = false;
@@ -114,6 +121,7 @@ class _ComInputTextState extends State<ComInputText> {
       } else {
         setState(() {
           _isError = false; //clear when input again
+          widget.fnContr!(false);
           //GlobalVar.isShowErrorOnAllInputTextField = false;//nothing diff but bug for dropdown
           /*if (widget.isEmail) {
             _isHideIconOnFocus = true;
@@ -232,8 +240,11 @@ class _ComInputTextState extends State<ComInputText> {
       } else {
         sAutofillHints = widget.sAutofillHints.toString();
       }
+      bool _isContr = widget.isContr ?? false;
+      if (_isContr) {
+        _controller.text = widget.sValue; //mo
+      } else {}
 
-      _controller.text = widget.sValue; //mo
       bool _isEnabled = widget.isEnabled ?? true;
 
       return Container(
