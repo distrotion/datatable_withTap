@@ -110,23 +110,25 @@ class _ComInputTextState extends State<ComInputText> {
     //focus ev for validation
     _focusNode.addListener(() {
       if (!_focusNode.hasFocus) {
-        setState(() {
-          BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
-          _isError = !ValidationCurrentText(_controller.value.text);
-          widget.fnContr!(false);
-          //GlobalVar.isShowErrorOnAllInputTextField = false;//nothing diff but bug for dropdown
-          // GlobalVar.isForceShowErrorOnAllInputTextField_EvenValid = false;
-          _isHideIconOnFocus = false;
-        });
+        // setState(() {
+
+        _isError = !ValidationCurrentText(_controller.value.text);
+        widget.fnContr!(false);
+        BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
+        //GlobalVar.isShowErrorOnAllInputTextField = false;//nothing diff but bug for dropdown
+        // GlobalVar.isForceShowErrorOnAllInputTextField_EvenValid = false;
+        _isHideIconOnFocus = false;
+        // });
       } else {
-        setState(() {
-          _isError = false; //clear when input again
-          widget.fnContr!(false);
-          //GlobalVar.isShowErrorOnAllInputTextField = false;//nothing diff but bug for dropdown
-          /*if (widget.isEmail) {
+        // setState(() {
+        _isError = false; //clear when input again
+        widget.fnContr!(false);
+        BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
+        //GlobalVar.isShowErrorOnAllInputTextField = false;//nothing diff but bug for dropdown
+        /*if (widget.isEmail) {
             _isHideIconOnFocus = true;
           }*/
-        });
+        // });
       }
     });
     //print("init " + widget.isShowError.toString());
@@ -151,14 +153,16 @@ class _ComInputTextState extends State<ComInputText> {
   @override
   Widget build(BuildContext context) {
     if (widget.isForceShowError) {
-      setState(() {
-        if (widget.InputTextState == enumInputTextStateList.inputText) {
-          _isError = !ValidationCurrentText(_controller.value.text);
-        } else if (widget.InputTextState == enumInputTextStateList.readOnly) {
-          _isError = !ValidationCurrentText(widget.sValue);
-        }
-        //print(_isError);
-      });
+      // setState(() {
+      if (widget.InputTextState == enumInputTextStateList.inputText) {
+        _isError = !ValidationCurrentText(_controller.value.text);
+        BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
+      } else if (widget.InputTextState == enumInputTextStateList.readOnly) {
+        _isError = !ValidationCurrentText(widget.sValue);
+        BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
+      }
+      //print(_isError);
+      // });
     }
     /*if (widget.isForceShowError && GlobalVar.isShowErrorOnAllInputTextField) {
       setState(() {
@@ -174,9 +178,10 @@ class _ComInputTextState extends State<ComInputText> {
     //--------------------------------------------------------------------------------------------------------
 
     void showHidePassowrd() {
-      setState(() {
-        _isHidePassword = !_isHidePassword;
-      });
+      // setState(() {
+      _isHidePassword = !_isHidePassword;
+      BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
+      // });
     }
 
     String getCorrectIconEmail_ImgPath() {
@@ -258,6 +263,9 @@ class _ComInputTextState extends State<ComInputText> {
             // BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
             // print(s);
           },
+          // onSaved: (s) {
+          //   widget.returnfunc(s);
+          // },
           focusNode: _focusNode,
           cursorColor: CustomTheme.colorGrey,
           obscureText: _isHidePassword,

@@ -42,9 +42,9 @@ class _TableStrucBuffer extends StatelessWidget {
 }
 
 class _TableStrucMain extends StatefulWidget {
-  _TableStrucMain({Key? key, this.datainput}) : super(key: key);
+  const _TableStrucMain({Key? key, this.datainput}) : super(key: key);
 
-  List<MainStrucTable>? datainput;
+  final List<MainStrucTable>? datainput;
 
   @override
   __TableStrucMainState createState() => __TableStrucMainState();
@@ -62,7 +62,7 @@ class __TableStrucMainState extends State<_TableStrucMain> {
     List<MainStrucTable> _datainput = widget.datainput ?? [];
     void tapChangeTablePage(int n) {
       setState(() {
-        print(n);
+        // print(n);
         TableTap1nPage = n;
       });
     }
@@ -154,7 +154,7 @@ class __TableStrucMainState extends State<_TableStrucMain> {
                     },
                     sValue: EditDataTable1.field01,
                     returnfunc: (String s) {
-                      EditDataTable1.field01 = s;
+                      EditDataTable1buffer.field01 = s;
                     }),
               ),
               SizedBox(
@@ -171,7 +171,7 @@ class __TableStrucMainState extends State<_TableStrucMain> {
                   },
                   sValue: EditDataTable1.field02,
                   returnfunc: (String s) {
-                    EditDataTable1.field02 = s;
+                    EditDataTable1buffer.field02 = s;
                   },
                 ),
               ),
@@ -189,7 +189,7 @@ class __TableStrucMainState extends State<_TableStrucMain> {
                   },
                   sValue: EditDataTable1.field03,
                   returnfunc: (String s) {
-                    EditDataTable1.field03 = s;
+                    EditDataTable1buffer.field03 = s;
                   },
                 ),
               ),
@@ -207,7 +207,7 @@ class __TableStrucMainState extends State<_TableStrucMain> {
                   },
                   sValue: EditDataTable1.field04,
                   returnfunc: (String s) {
-                    EditDataTable1.field04 = s;
+                    EditDataTable1buffer.field04 = s;
                   },
                 ),
               ),
@@ -226,8 +226,9 @@ class __TableStrucMainState extends State<_TableStrucMain> {
                       ComBtnBlack(
                           sLabel: "Save",
                           func: () {
-                            context.read<FetchDataTable1Bloc>().add(
-                                DataSequncePage1.update); //<------------------
+                            print(EditDataTable1buffer.field04);
+                            // context.read<FetchDataTable1Bloc>().add(
+                            //     DataSequncePage1.update); //<------------------
                           },
                           nWidth: 134),
                       SizedBox(
@@ -237,6 +238,7 @@ class __TableStrucMainState extends State<_TableStrucMain> {
                           sLabel: "Cancle",
                           cBg: Colors.red,
                           func: () {
+                            undercontroltap1 = true;
                             EditDataTable1 = MainStrucTable(
                                 number: "",
                                 field01: "",

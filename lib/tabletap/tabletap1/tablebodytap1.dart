@@ -10,8 +10,8 @@ import 'datatap1/datatap1.dart';
 import 'modelintable.dart';
 
 class DataListTable extends StatefulWidget {
-  DataListTable({Key? key, required this.datainput}) : super(key: key);
-  List<MainStrucTable> datainput;
+  const DataListTable({Key? key, required this.datainput}) : super(key: key);
+  final List<MainStrucTable> datainput;
   @override
   _DataListTableState createState() => _DataListTableState();
 }
